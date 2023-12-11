@@ -5,7 +5,7 @@ const ButtonList = () => {
 
   const list = ["Music","Soft Rock", "Acostic Guitar","Contemporary Worship Music","Auditions","Blind Auditions", "Ed Sheeran", "Burna Boy", "Live", ]
   return (
-    <div className='flex gap-x-3 sticky z-50 top-16 bg-white'>
+    <div className='flex gap-x-2'>
       <div className='mr-2 mt-1 cursor-pointer'>
         <i className="fa fa-angle-left " 
           aria-hidden="true">
