@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { toggleMenu } from '../utils/appSlice'
 import { YOUTUBE_VIDEO_API_SEARCH_SUGGESTIONS } from '../utils/configs'
+import { cacheResults } from '../utils/searchSlice'
 
 const Header = () => {
 
@@ -11,27 +12,46 @@ const Header = () => {
 
     const [showSuggestions, setShowSuggestions] = useState(false)
 
+    const searchCache = useSelector(store=>store.search)
+
     const dispatch = useDispatch()
 
-    const toggleMenuHandler = () =>{
-        dispatch(toggleMenu())
-    }
+   
 
     useEffect(()=>{
-       const timer = setTimeout(() => getSearchSuggestions(), 200)
+       const timer = setTimeout(() =>{ 
+        
+            if (searchCache[searchQuery]) {
+                setSuggestions(searchCache[searchQuery])
+            } else {
+                getSearchSuggestions()
+            }
+        
+        }, 200)
 
        return () =>{
         clearTimeout(timer)
        }
     },[searchQuery])
 
+
     const getSearchSuggestions = async()=>{
+
         const data = await fetch(YOUTUBE_VIDEO_API_SEARCH_SUGGESTIONS + searchQuery)
 
         const json = await data.json()
 
         setSuggestions(json[1])
+
+        dispatch(cacheResults({
+            [searchQuery ] : json[1]
+        }))
     }
+
+    const toggleMenuHandler = () =>{
+        dispatch(toggleMenu())
+    }
+    
   return (
     <div className='grid grid-flow-col h-16 items-center p-1 mb-2 sticky z-50 top-0 col bg-white'>
         <div className='flex gap-x-2 col-span-1'>
