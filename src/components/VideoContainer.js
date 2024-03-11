@@ -20,7 +20,7 @@ const VideoContainer = () => {
     setVideos(json.items)
   }
   return (
-    <div className='ml-4 mt-5 flex flex-wrap justify-start gap-x-6'>
+    <div className='ml-2 mt-32 flex flex-wrap justify-center sm:justify-start gap-x-4 overflow-y-scroll'>
       {videos.map((video)=>
       <Link key={video.id} to={"/watch?v="+ video.id}>
         <VideoCard info={video}/>

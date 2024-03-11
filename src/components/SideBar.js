@@ -10,7 +10,7 @@ const SideBar = () => {
   if(!isMenuOpen )return null
 
     return(
-    <div className='grid col-span-1 shadow-md mb-3 p-2 h-fit w-52 bg-white '>
+    <div className=' w-48 text-xs sm:grid col-span-1 sm:w-72 shadow-md mb-3 p-2 h-screen bg-white mt-14 overflow-y-scroll hidden'>
         <div className='border-gray-300 border-b-2'>
           <div className='flex gap-y-2 gap-x-6 items-center ml-3 mr-3 rounded-lg p-4 justify-start w-auto h-3       border bg-gray-100 text-sm font-medium cursor-pointer'>
             <i className="fa fa-home" aria-hidden="true"></i>

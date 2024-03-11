@@ -5,7 +5,7 @@ const VideoCard = ({info}) => {
 
 
   return (
-    <div className='w-72 object-center gap-y-2  mb-5'>
+    <div className='w-72 w- sm:w-72 object-center gap-y-2  mb-5'>
             <img 
                 className='rounded-2xl text-lg'
                 src={info?.snippet?.thumbnails?.high?.url} 

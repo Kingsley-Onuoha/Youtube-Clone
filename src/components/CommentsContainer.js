@@ -90,8 +90,8 @@ const CommentsList = ({comments}) =>{
 
 const CommentsContainer = () => {
   return (
-    <div className='py-3'>
-        <h1 className='text-2xl font-bold'>Comments</h1>
+    <div className='sm:py-3 py-1'>
+        <h1 className='sm:text-2xl text-lg font-bold'>Comments</h1>
         <CommentsList comments={commentData}/>
     </div>
   )
